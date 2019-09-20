@@ -17,10 +17,21 @@ class App extends Component {
       }
     ]
   };
+  customEvent = () =>{
+    const startHour = Math.random()*12
+    const newEv = {
+      start: new Date(2019, 8, 20, startHour),
+      end:  new Date(2019, 8, 20, startHour + 2),
+      title: "Custom Event yay"
+    }
+    this.setState({events: [...this.state.events, newEv]})
+    console.log(this.state.events)
+  }
 
   render() {
     return (
       <div className="App">
+        <button onClick={()=> this.customEvent()}>Add Event</button>
         <Calendar
           localizer={localizer}
           defaultDate={new Date()}
